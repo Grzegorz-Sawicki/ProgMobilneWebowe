@@ -1,0 +1,49 @@
+﻿@page
+@model L1.Pages.FormModel
+@{
+    ViewData["Title"] = "Form page";
+}
+
+<form method="post">
+    <div>
+        <label asp-for="Username">Username</label>
+        <input type="text" asp-for="Username" />
+    </div>
+
+    <div>
+        <label asp-for="Email">Email</label>
+        <input type="email" asp-for="Email" />
+    </div>
+
+    <div>
+        <label asp-for="Message">Message</label>
+        <textarea asp-for="Message"></textarea>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+
+@if (Model.Username != null)
+{
+    <h3>Obiekty:</h3>
+    <p><strong>Username:</strong> @Model.Username</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Message:</strong> @Model.Message</p>
+}
+
+@if (HttpContext.Session.GetString("Username") != null)
+{
+    <h3>Zmienne sesji:</h3>
+    <p><strong>Username:</strong> @HttpContext.Session.GetString("Username")</p>
+    <p><strong>Email:</strong> @HttpContext.Session.GetString("Email")</p>
+    <p><strong>Message:</strong> @HttpContext.Session.GetString("Message")</p>
+}
+
+@if (ViewData["Username"] != null)
+{
+    <h3>Dane kontekstowe ViewData:</h3>
+    <p><strong>Username:</strong> @ViewData["Username"]</p>
+    <p><strong>Email:</strong> @ViewData["Email"]</p>
+    <p><strong>Message:</strong> @ViewData["Message"]</p>
+}
+

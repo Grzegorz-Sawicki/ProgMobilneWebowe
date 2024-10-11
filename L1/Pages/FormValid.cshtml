@@ -1,0 +1,33 @@
+﻿@page
+@model L1.Pages.FormValidModel
+@{
+	ViewData["Title"] = "Form with Validation";
+}
+
+<form method="post">
+    <div>
+        <label asp-for="Username">Username</label>
+        <input type="text" asp-for="Username" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email">Email</label>
+        <input type="text" asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password">Password</label>
+        <input type="password" asp-for="Password"></text>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="ConfirmPassword">Confirm Password</label>
+        <input type="password" asp-for="ConfirmPassword"></text>
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
