@@ -1,0 +1,21 @@
+﻿@page
+@model L1.Pages.MessagesModel
+@{
+}
+
+@section Scripts {
+    <script>
+        function ajax() {
+            $.ajax({
+                type: "GET",
+                url: "/Message",
+                success: message => $("#message").html(message) 
+            })
+        }
+    </script>
+}
+
+<div>
+    <button onclick="ajax()">Get Message</button>
+    <div id="message"></div> 
+</div>
