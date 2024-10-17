@@ -1,0 +1,35 @@
+﻿@model List<ListItemModel>
+
+<h1>To-Do List</h1>
+
+<form method="post" asp-action="Add">
+    <input type="text" name="description" placeholder="Add new task" required />
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    @foreach (var item in Model)
+
+    {
+        <li>
+            <form method="post" asp-action="ToggleFinished" style="display:inline;">
+                <input type="hidden" name="id" value="@item.Id" />
+                <button type="submit">
+                    @if (item.IsFinished)
+                    {
+                        <s>@item.Description</s>
+                    }
+
+                    else
+                    {
+                        @item.Description
+                    }
+                </button>
+            </form>
+            <form method="post" asp-action="Delete" style="display:inline;">
+                <input type="hidden" name="id" value="@item.Id" />
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    }
+</ul>
