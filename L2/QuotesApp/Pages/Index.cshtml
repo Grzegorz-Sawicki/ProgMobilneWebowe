@@ -1,0 +1,217 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div id="root" class="p-2"></div>
+
+@section Scripts {
+<script>
+    class QuotesRepository {
+        getAllQuotes() {
+            return JSON.parse(localStorage.getItem('quotes')) ?? [];
+        }
+
+        saveQuote(quote) {
+            const quotes = this.getAllQuotes();
+
+            const index = quotes.findIndex(other => other.id === quote.id);
+            const exists = index !== -1;
+
+            if (exists) {
+                const updated = [...quotes.slice(0, index), quote, ...quotes.slice(index + 1)];
+                localStorage.setItem('quotes', JSON.stringify(updated));
+                return;
+            }
+
+            const id = quotes.reduce((max, quote) => (quote.id > max ? quote.id : max), 0);
+            quote.id = id + 1;
+            const inserted = [...quotes, quote];
+            localStorage.setItem('quotes', JSON.stringify(inserted));
+        }
+
+        deleteQuote(quote) {
+            const quotes = this.getAllQuotes();
+            const deleted = quotes.filter(other => other.id !== quote.id);
+            localStorage.setItem('quotes', JSON.stringify(deleted));
+        }
+    }
+
+    function App() {
+        const quotesRepository = new QuotesRepository();
+        const quotes = quotesRepository.getAllQuotes();
+
+        const quotesListElement = document.createElement('ol');
+        quotesListElement.className = 'list-group';
+
+        for (const quote of quotes) {
+            const quoteListItemElement = document.createElement('li');
+            quoteListItemElement.className = 'list-group-item';
+
+            let quoteElement;
+            if (quote.status === 'edit') {
+                quoteElement = EditQuote({
+                    quote,
+                    onSubmit: (quoteValue, author) => {
+                        quotesRepository.saveQuote({
+                            id: quote.id,
+                            quote: quoteValue,
+                            author,
+                            status: 'view',
+                        });
+                        render();
+                    },
+                    onCancel: quote => {
+                        quotesRepository.saveQuote({
+                            ...quote,
+                            status: 'view',
+                        });
+                        render();
+                    },
+                });
+            } else {
+                quoteElement = Quote({
+                    quote,
+                    onEdit: quote => {
+                        quotesRepository.saveQuote({
+                            ...quote,
+                            status: 'edit',
+                        });
+                        render();
+                    },
+                    onDelete: quote => {
+                        quotesRepository.deleteQuote(quote);
+                        render();
+                    },
+                });
+            }
+
+            quoteListItemElement.appendChild(quoteElement);
+            quotesListElement.appendChild(quoteListItemElement);
+        }
+
+        const addQuoteListItemElement = document.createElement('li');
+        addQuoteListItemElement.className = 'list-group-item';
+        const addQuoteElement = AddQuote({
+            onSubmit: (quote, author) => {
+                quotesRepository.saveQuote({
+                    quote,
+                    author,
+                    status: 'view',
+                });
+                render();
+            },
+        });
+        addQuoteListItemElement.appendChild(addQuoteElement);
+        quotesListElement.appendChild(addQuoteListItemElement);
+
+        return quotesListElement;
+    }
+
+    function Quote({ quote, onEdit, onDelete }) {
+        const container = document.createElement('div');
+        container.className = 'd-flex justify-content-between align-items-center';
+
+        const quoteContainer = document.createElement('div');
+        quoteContainer.textContent = `${quote.quote} ~ ${quote.author}`;
+        container.appendChild(quoteContainer);
+
+        const buttons= document.createElement('div');
+        buttons.className = 'btn-group ms-2';
+
+        const editButton = document.createElement('button');
+        editButton.className = 'btn btn-outline-primary';
+        editButton.textContent = 'Edit';
+        editButton.addEventListener('click', () => onEdit(quote));
+        buttons.appendChild(editButton);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'btn btn-outline-danger';
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', () => onDelete(quote));
+        buttons.appendChild(deleteButton);
+
+        container.appendChild(buttons);
+
+        return container;
+    }
+
+    function EditQuote({ quote, onSubmit, onCancel }) {
+        const container = document.createElement('form');
+        container.className = 'input-group d-flex justify-content-between';
+
+        const quoteInput = document.createElement('input');
+        quoteInput.name = 'quote';
+        quoteInput.className = 'form-control w-50';
+        quoteInput.placeholder = 'Quote';
+        quoteInput.value = quote.quote;
+        container.appendChild(quoteInput);
+
+        const quoteSeparator = document.createElement('span');
+        quoteSeparator.className = 'input-group-text';
+        quoteSeparator.textContent = '~';
+        container.appendChild(quoteSeparator);
+
+        const authorInput = document.createElement('input');
+        authorInput.name = 'author';
+        authorInput.className = 'form-control w-25';
+        authorInput.placeholder = 'Author';
+        authorInput.value = quote.author
+        container.appendChild(authorInput);
+
+        const submit = document.createElement('button');
+        submit.className = 'btn btn-outline-primary';
+        submit.textContent = 'Save quote';
+        submit.addEventListener('click', () => onSubmit(quoteInput.value, authorInput.value));
+        container.appendChild(submit);
+
+        const cancel = document.createElement('button');
+        cancel.className = 'btn btn-outline-danger';
+        cancel.textContent = 'Cancel';
+        cancel.addEventListener('click', () => onCancel(quote));
+        container.appendChild(cancel);
+
+        return container;
+    }
+
+    function AddQuote({ onSubmit }) {
+        const container = document.createElement('form');
+        container.className = 'input-group d-flex';
+
+        const quoteInput = document.createElement('input');
+        quoteInput.name = 'quote';
+        quoteInput.className = 'form-control w-50';
+        quoteInput.placeholder = 'Quote';
+        container.appendChild(quoteInput);
+
+        const quoteSeparator = document.createElement('span');
+        quoteSeparator.className = 'input-group-text';
+        quoteSeparator.textContent = '~';
+        container.appendChild(quoteSeparator);
+
+        const authorInput = document.createElement('input');
+        authorInput.name = 'author';
+        authorInput.className = 'form-control w-25';
+        authorInput.placeholder = 'Author';
+        container.appendChild(authorInput);
+
+        const submit = document.createElement('button');
+        submit.className = 'btn btn-outline-primary';
+        submit.textContent = 'Add quote';
+        submit.addEventListener('click', () => onSubmit(quoteInput.value, authorInput.value));
+        container.appendChild(submit);
+
+        return container;
+    }
+
+    function render() {
+        const app = App();
+
+        const root = document.getElementById('root');
+        root.replaceChildren(app);
+    }
+
+    render();
+</script>
+}
