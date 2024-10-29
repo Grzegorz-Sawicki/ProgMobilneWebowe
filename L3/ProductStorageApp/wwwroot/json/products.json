@@ -1,0 +1,569 @@
+[
+  {
+    "Id": 1,
+    "Name": "Smartphone",
+    "Price": 699,
+    "Category": 0,
+    "Quantity": 15
+  },
+  {
+    "Id": 2,
+    "Name": "Laptop",
+    "Price": 1200,
+    "Category": 0,
+    "Quantity": 8
+  },
+  {
+    "Id": 3,
+    "Name": "T-Shirt",
+    "Price": 20,
+    "Category": 1,
+    "Quantity": 50
+  },
+  {
+    "Id": 4,
+    "Name": "Jeans",
+    "Price": 45,
+    "Category": 1,
+    "Quantity": 35
+  },
+  {
+    "Id": 5,
+    "Name": "Microwave Oven",
+    "Price": 120,
+    "Category": 2,
+    "Quantity": 12
+  },
+  {
+    "Id": 6,
+    "Name": "Vacuum Cleaner",
+    "Price": 150,
+    "Category": 2,
+    "Quantity": 7
+  },
+  {
+    "Id": 7,
+    "Name": "Novel Book",
+    "Price": 15,
+    "Category": 3,
+    "Quantity": 60
+  },
+  {
+    "Id": 8,
+    "Name": "Cookbook",
+    "Price": 25,
+    "Category": 3,
+    "Quantity": 30
+  },
+  {
+    "Id": 9,
+    "Name": "Shampoo",
+    "Price": 10,
+    "Category": 4,
+    "Quantity": 45
+  },
+  {
+    "Id": 10,
+    "Name": "Vitamin C Tablets",
+    "Price": 8,
+    "Category": 4,
+    "Quantity": 50
+  },
+  {
+    "Id": 11,
+    "Name": "Basketball",
+    "Price": 25,
+    "Category": 5,
+    "Quantity": 20
+  },
+  {
+    "Id": 12,
+    "Name": "Yoga Mat",
+    "Price": 30,
+    "Category": 5,
+    "Quantity": 25
+  },
+  {
+    "Id": 13,
+    "Name": "Board Game",
+    "Price": 35,
+    "Category": 6,
+    "Quantity": 22
+  },
+  {
+    "Id": 14,
+    "Name": "Action Figure",
+    "Price": 15,
+    "Category": 6,
+    "Quantity": 40
+  },
+  {
+    "Id": 15,
+    "Name": "Apple",
+    "Price": 1,
+    "Category": 7,
+    "Quantity": 150
+  },
+  {
+    "Id": 16,
+    "Name": "Orange Juice",
+    "Price": 3,
+    "Category": 7,
+    "Quantity": 100
+  },
+  {
+    "Id": 17,
+    "Name": "Car Oil",
+    "Price": 25,
+    "Category": 8,
+    "Quantity": 15
+  },
+  {
+    "Id": 18,
+    "Name": "Car Air Freshener",
+    "Price": 5,
+    "Category": 8,
+    "Quantity": 50
+  },
+  {
+    "Id": 19,
+    "Name": "Notebook",
+    "Price": 2,
+    "Category": 9,
+    "Quantity": 120
+  },
+  {
+    "Id": 20,
+    "Name": "Pen",
+    "Price": 1,
+    "Category": 9,
+    "Quantity": 300
+  },
+  {
+    "Id": 21,
+    "Name": "Tablet",
+    "Price": 350,
+    "Category": 0,
+    "Quantity": 10
+  },
+  {
+    "Id": 22,
+    "Name": "Headphones",
+    "Price": 80,
+    "Category": 0,
+    "Quantity": 25
+  },
+  {
+    "Id": 23,
+    "Name": "Jacket",
+    "Price": 60,
+    "Category": 1,
+    "Quantity": 20
+  },
+  {
+    "Id": 24,
+    "Name": "Sneakers",
+    "Price": 75,
+    "Category": 1,
+    "Quantity": 15
+  },
+  {
+    "Id": 25,
+    "Name": "Refrigerator",
+    "Price": 500,
+    "Category": 2,
+    "Quantity": 5
+  },
+  {
+    "Id": 26,
+    "Name": "Blender",
+    "Price": 45,
+    "Category": 2,
+    "Quantity": 20
+  },
+  {
+    "Id": 27,
+    "Name": "Science Fiction Book",
+    "Price": 18,
+    "Category": 3,
+    "Quantity": 40
+  },
+  {
+    "Id": 28,
+    "Name": "Biography Book",
+    "Price": 22,
+    "Category": 3,
+    "Quantity": 25
+  },
+  {
+    "Id": 29,
+    "Name": "Conditioner",
+    "Price": 9,
+    "Category": 4,
+    "Quantity": 30
+  },
+  {
+    "Id": 30,
+    "Name": "Protein Powder",
+    "Price": 30,
+    "Category": 4,
+    "Quantity": 20
+  },
+  {
+    "Id": 31,
+    "Name": "Soccer Ball",
+    "Price": 20,
+    "Category": 5,
+    "Quantity": 18
+  },
+  {
+    "Id": 32,
+    "Name": "Dumbbell Set",
+    "Price": 50,
+    "Category": 5,
+    "Quantity": 12
+  },
+  {
+    "Id": 33,
+    "Name": "Puzzle Game",
+    "Price": 10,
+    "Category": 6,
+    "Quantity": 30
+  },
+  {
+    "Id": 34,
+    "Name": "Doll",
+    "Price": 12,
+    "Category": 6,
+    "Quantity": 40
+  },
+  {
+    "Id": 35,
+    "Name": "Banana",
+    "Price": 1,
+    "Category": 7,
+    "Quantity": 200
+  },
+  {
+    "Id": 36,
+    "Name": "Coffee",
+    "Price": 5,
+    "Category": 7,
+    "Quantity": 80
+  },
+  {
+    "Id": 37,
+    "Name": "Tire",
+    "Price": 100,
+    "Category": 8,
+    "Quantity": 10
+  },
+  {
+    "Id": 38,
+    "Name": "Car Battery",
+    "Price": 75,
+    "Category": 8,
+    "Quantity": 5
+  },
+  {
+    "Id": 39,
+    "Name": "Marker",
+    "Price": 1.5,
+    "Category": 9,
+    "Quantity": 150
+  },
+  {
+    "Id": 40,
+    "Name": "Stapler",
+    "Price": 8,
+    "Category": 9,
+    "Quantity": 30
+  },
+  {
+    "Id": 41,
+    "Name": "Digital Camera",
+    "Price": 250,
+    "Category": 0,
+    "Quantity": 12
+  },
+  {
+    "Id": 42,
+    "Name": "Smartwatch",
+    "Price": 200,
+    "Category": 0,
+    "Quantity": 18
+  },
+  {
+    "Id": 43,
+    "Name": "Cap",
+    "Price": 15,
+    "Category": 1,
+    "Quantity": 25
+  },
+  {
+    "Id": 44,
+    "Name": "Socks",
+    "Price": 5,
+    "Category": 1,
+    "Quantity": 80
+  },
+  {
+    "Id": 45,
+    "Name": "Air Conditioner",
+    "Price": 300,
+    "Category": 2,
+    "Quantity": 7
+  },
+  {
+    "Id": 46,
+    "Name": "Toaster",
+    "Price": 30,
+    "Category": 2,
+    "Quantity": 15
+  },
+  {
+    "Id": 47,
+    "Name": "History Book",
+    "Price": 20,
+    "Category": 3,
+    "Quantity": 35
+  },
+  {
+    "Id": 48,
+    "Name": "Self-Help Book",
+    "Price": 18,
+    "Category": 3,
+    "Quantity": 30
+  },
+  {
+    "Id": 49,
+    "Name": "Face Cream",
+    "Price": 25,
+    "Category": 4,
+    "Quantity": 20
+  },
+  {
+    "Id": 50,
+    "Name": "Body Lotion",
+    "Price": 10,
+    "Category": 4,
+    "Quantity": 35
+  },
+  {
+    "Id": 51,
+    "Name": "Tennis Racket",
+    "Price": 60,
+    "Category": 5,
+    "Quantity": 10
+  },
+  {
+    "Id": 52,
+    "Name": "Running Shoes",
+    "Price": 85,
+    "Category": 5,
+    "Quantity": 15
+  },
+  {
+    "Id": 53,
+    "Name": "Building Blocks",
+    "Price": 40,
+    "Category": 6,
+    "Quantity": 25
+  },
+  {
+    "Id": 54,
+    "Name": "Remote Control Car",
+    "Price": 20,
+    "Category": 6,
+    "Quantity": 35
+  },
+  {
+    "Id": 55,
+    "Name": "Bread",
+    "Price": 2,
+    "Category": 7,
+    "Quantity": 100
+  },
+  {
+    "Id": 56,
+    "Name": "Milk",
+    "Price": 1.5,
+    "Category": 7,
+    "Quantity": 90
+  },
+  {
+    "Id": 57,
+    "Name": "Windshield Wiper",
+    "Price": 10,
+    "Category": 8,
+    "Quantity": 20
+  },
+  {
+    "Id": 58,
+    "Name": "Engine Oil",
+    "Price": 45,
+    "Category": 8,
+    "Quantity": 8
+  },
+  {
+    "Id": 59,
+    "Name": "Highlighter",
+    "Price": 2,
+    "Category": 9,
+    "Quantity": 100
+  },
+  {
+    "Id": 60,
+    "Name": "Calculator",
+    "Price": 15,
+    "Category": 9,
+    "Quantity": 20
+  },
+  {
+    "Id": 61,
+    "Name": "Wireless Speaker",
+    "Price": 60,
+    "Category": 0,
+    "Quantity": 15
+  },
+  {
+    "Id": 62,
+    "Name": "Portable Charger",
+    "Price": 25,
+    "Category": 0,
+    "Quantity": 30
+  },
+  {
+    "Id": 63,
+    "Name": "Scarf",
+    "Price": 10,
+    "Category": 1,
+    "Quantity": 45
+  },
+  {
+    "Id": 64,
+    "Name": "Belt",
+    "Price": 15,
+    "Category": 1,
+    "Quantity": 20
+  },
+  {
+    "Id": 65,
+    "Name": "Washing Machine",
+    "Price": 400,
+    "Category": 2,
+    "Quantity": 6
+  },
+  {
+    "Id": 66,
+    "Name": "Kettle",
+    "Price": 25,
+    "Category": 2,
+    "Quantity": 20
+  },
+  {
+    "Id": 67,
+    "Name": "Fantasy Book",
+    "Price": 15,
+    "Category": 3,
+    "Quantity": 45
+  },
+  {
+    "Id": 68,
+    "Name": "Dictionary",
+    "Price": 30,
+    "Category": 3,
+    "Quantity": 10
+  },
+  {
+    "Id": 69,
+    "Name": "Toothpaste",
+    "Price": 2,
+    "Category": 4,
+    "Quantity": 50
+  },
+  {
+    "Id": 70,
+    "Name": "Hair Gel",
+    "Price": 5,
+    "Category": 4,
+    "Quantity": 30
+  },
+  {
+    "Id": 71,
+    "Name": "Golf Clubs",
+    "Price": 250,
+    "Category": 5,
+    "Quantity": 8
+  },
+  {
+    "Id": 72,
+    "Name": "Swimming Goggles",
+    "Price": 10,
+    "Category": 5,
+    "Quantity": 25
+  },
+  {
+    "Id": 73,
+    "Name": "Toy Train",
+    "Price": 18,
+    "Category": 6,
+    "Quantity": 20
+  },
+  {
+    "Id": 74,
+    "Name": "Stuffed Animal",
+    "Price": 12,
+    "Category": 6,
+    "Quantity": 40
+  },
+  {
+    "Id": 75,
+    "Name": "Yogurt",
+    "Price": 1,
+    "Category": 7,
+    "Quantity": 75
+  },
+  {
+    "Id": 76,
+    "Name": "Pasta",
+    "Price": 2,
+    "Category": 7,
+    "Quantity": 100
+  },
+  {
+    "Id": 77,
+    "Name": "Car Jack",
+    "Price": 25,
+    "Category": 8,
+    "Quantity": 15
+  },
+  {
+    "Id": 78,
+    "Name": "Tire Inflator",
+    "Price": 40,
+    "Category": 8,
+    "Quantity": 10
+  },
+  {
+    "Id": 79,
+    "Name": "Binder",
+    "Price": 3,
+    "Category": 9,
+    "Quantity": 50
+  },
+  {
+    "Id": 80,
+    "Name": "Glue Stick",
+    "Price": 1,
+    "Category": 9,
+    "Quantity": 100
+  },
+  {
+    "Id": 81,
+    "Name": "Potato",
+    "Price": 10,
+    "Category": 7,
+    "Quantity": 50
+  }
+]
