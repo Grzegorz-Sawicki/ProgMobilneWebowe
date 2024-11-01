@@ -28,5 +28,415 @@
     "ProductPrice": 10,
     "ProductCategory": 7,
     "ProductQuantity": 50
+  },
+  {
+    "Id": 4,
+    "Type": 0,
+    "Date": "2023-01-15",
+    "ProductId": 1,
+    "ProductName": "Smartphone",
+    "ProductPrice": 699,
+    "ProductCategory": 0,
+    "ProductQuantity": 5
+  },
+  {
+    "Id": 5,
+    "Type": 1,
+    "Date": "2023-02-20",
+    "ProductId": 2,
+    "ProductName": "Laptop",
+    "ProductPrice": 1200,
+    "ProductCategory": 0,
+    "ProductQuantity": 2
+  },
+  {
+    "Id": 6,
+    "Type": 0,
+    "Date": "2023-03-10",
+    "ProductId": 3,
+    "ProductName": "T-Shirt",
+    "ProductPrice": 20,
+    "ProductCategory": 1,
+    "ProductQuantity": 30
+  },
+  {
+    "Id": 7,
+    "Type": 1,
+    "Date": "2023-04-05",
+    "ProductId": 4,
+    "ProductName": "Jeans",
+    "ProductPrice": 45,
+    "ProductCategory": 1,
+    "ProductQuantity": 5
+  },
+  {
+    "Id": 8,
+    "Type": 0,
+    "Date": "2023-05-22",
+    "ProductId": 5,
+    "ProductName": "Microwave Oven",
+    "ProductPrice": 120,
+    "ProductCategory": 2,
+    "ProductQuantity": 8
+  },
+  {
+    "Id": 9,
+    "Type": 1,
+    "Date": "2023-06-17",
+    "ProductId": 6,
+    "ProductName": "Vacuum Cleaner",
+    "ProductPrice": 150,
+    "ProductCategory": 2,
+    "ProductQuantity": 3
+  },
+  {
+    "Id": 10,
+    "Type": 0,
+    "Date": "2023-07-30",
+    "ProductId": 7,
+    "ProductName": "Novel Book",
+    "ProductPrice": 15,
+    "ProductCategory": 3,
+    "ProductQuantity": 20
+  },
+  {
+    "Id": 11,
+    "Type": 1,
+    "Date": "2023-08-14",
+    "ProductId": 8,
+    "ProductName": "Cookbook",
+    "ProductPrice": 25,
+    "ProductCategory": 3,
+    "ProductQuantity": 10
+  },
+  {
+    "Id": 12,
+    "Type": 0,
+    "Date": "2023-09-23",
+    "ProductId": 9,
+    "ProductName": "Shampoo",
+    "ProductPrice": 10,
+    "ProductCategory": 4,
+    "ProductQuantity": 25
+  },
+  {
+    "Id": 13,
+    "Type": 1,
+    "Date": "2023-10-10",
+    "ProductId": 10,
+    "ProductName": "Vitamin C Tablets",
+    "ProductPrice": 8,
+    "ProductCategory": 4,
+    "ProductQuantity": 15
+  },
+  {
+    "Id": 14,
+    "Type": 0,
+    "Date": "2023-11-11",
+    "ProductId": 11,
+    "ProductName": "Basketball",
+    "ProductPrice": 25,
+    "ProductCategory": 5,
+    "ProductQuantity": 10
+  },
+  {
+    "Id": 15,
+    "Type": 1,
+    "Date": "2023-12-08",
+    "ProductId": 12,
+    "ProductName": "Yoga Mat",
+    "ProductPrice": 30,
+    "ProductCategory": 5,
+    "ProductQuantity": 5
+  },
+  {
+    "Id": 16,
+    "Type": 0,
+    "Date": "2022-01-03",
+    "ProductId": 13,
+    "ProductName": "Board Game",
+    "ProductPrice": 35,
+    "ProductCategory": 6,
+    "ProductQuantity": 12
+  },
+  {
+    "Id": 17,
+    "Type": 1,
+    "Date": "2022-02-17",
+    "ProductId": 14,
+    "ProductName": "Action Figure",
+    "ProductPrice": 15,
+    "ProductCategory": 6,
+    "ProductQuantity": 20
+  },
+  {
+    "Id": 18,
+    "Type": 0,
+    "Date": "2022-03-25",
+    "ProductId": 15,
+    "ProductName": "Apple",
+    "ProductPrice": 1,
+    "ProductCategory": 7,
+    "ProductQuantity": 50
+  },
+  {
+    "Id": 19,
+    "Type": 1,
+    "Date": "2022-04-06",
+    "ProductId": 16,
+    "ProductName": "Orange Juice",
+    "ProductPrice": 3,
+    "ProductCategory": 7,
+    "ProductQuantity": 30
+  },
+  {
+    "Id": 20,
+    "Type": 0,
+    "Date": "2022-05-15",
+    "ProductId": 17,
+    "ProductName": "Car Oil",
+    "ProductPrice": 25,
+    "ProductCategory": 8,
+    "ProductQuantity": 8
+  },
+  {
+    "Id": 21,
+    "Type": 1,
+    "Date": "2022-06-24",
+    "ProductId": 18,
+    "ProductName": "Car Air Freshener",
+    "ProductPrice": 5,
+    "ProductCategory": 8,
+    "ProductQuantity": 20
+  },
+  {
+    "Id": 22,
+    "Type": 0,
+    "Date": "2022-07-10",
+    "ProductId": 19,
+    "ProductName": "Notebook",
+    "ProductPrice": 2,
+    "ProductCategory": 9,
+    "ProductQuantity": 100
+  },
+  {
+    "Id": 23,
+    "Type": 1,
+    "Date": "2022-08-19",
+    "ProductId": 20,
+    "ProductName": "Pen",
+    "ProductPrice": 1,
+    "ProductCategory": 9,
+    "ProductQuantity": 50
+  },
+  {
+    "Id": 24,
+    "Type": 0,
+    "Date": "2022-09-05",
+    "ProductId": 21,
+    "ProductName": "Tablet",
+    "ProductPrice": 350,
+    "ProductCategory": 0,
+    "ProductQuantity": 5
+  },
+  {
+    "Id": 25,
+    "Type": 1,
+    "Date": "2022-10-20",
+    "ProductId": 22,
+    "ProductName": "Headphones",
+    "ProductPrice": 80,
+    "ProductCategory": 0,
+    "ProductQuantity": 10
+  },
+  {
+    "Id": 26,
+    "Type": 0,
+    "Date": "2022-11-13",
+    "ProductId": 23,
+    "ProductName": "Jacket",
+    "ProductPrice": 60,
+    "ProductCategory": 1,
+    "ProductQuantity": 8
+  },
+  {
+    "Id": 27,
+    "Type": 1,
+    "Date": "2022-12-01",
+    "ProductId": 24,
+    "ProductName": "Sneakers",
+    "ProductPrice": 75,
+    "ProductCategory": 1,
+    "ProductQuantity": 6
+  },
+  {
+    "Id": 28,
+    "Type": 0,
+    "Date": "2021-01-28",
+    "ProductId": 25,
+    "ProductName": "Refrigerator",
+    "ProductPrice": 500,
+    "ProductCategory": 2,
+    "ProductQuantity": 3
+  },
+  {
+    "Id": 29,
+    "Type": 1,
+    "Date": "2021-02-12",
+    "ProductId": 26,
+    "ProductName": "Blender",
+    "ProductPrice": 45,
+    "ProductCategory": 2,
+    "ProductQuantity": 10
+  },
+  {
+    "Id": 30,
+    "Type": 0,
+    "Date": "2021-03-09",
+    "ProductId": 27,
+    "ProductName": "Science Fiction Book",
+    "ProductPrice": 18,
+    "ProductCategory": 3,
+    "ProductQuantity": 18
+  },
+  {
+    "Id": 31,
+    "Type": 1,
+    "Date": "2021-04-07",
+    "ProductId": 28,
+    "ProductName": "Biography Book",
+    "ProductPrice": 22,
+    "ProductCategory": 3,
+    "ProductQuantity": 15
+  },
+  {
+    "Id": 32,
+    "Type": 0,
+    "Date": "2021-05-04",
+    "ProductId": 29,
+    "ProductName": "Conditioner",
+    "ProductPrice": 9,
+    "ProductCategory": 4,
+    "ProductQuantity": 18
+  },
+  {
+    "Id": 33,
+    "Type": 1,
+    "Date": "2021-06-29",
+    "ProductId": 30,
+    "ProductName": "Protein Powder",
+    "ProductPrice": 30,
+    "ProductCategory": 4,
+    "ProductQuantity": 10
+  },
+  {
+    "Id": 34,
+    "Type": 0,
+    "Date": "2021-07-21",
+    "ProductId": 31,
+    "ProductName": "Soccer Ball",
+    "ProductPrice": 20,
+    "ProductCategory": 5,
+    "ProductQuantity": 12
+  },
+  {
+    "Id": 35,
+    "Type": 1,
+    "Date": "2021-08-11",
+    "ProductId": 32,
+    "ProductName": "Dumbbell Set",
+    "ProductPrice": 50,
+    "ProductCategory": 5,
+    "ProductQuantity": 6
+  },
+  {
+    "Id": 36,
+    "Type": 0,
+    "Date": "2021-09-17",
+    "ProductId": 33,
+    "ProductName": "Puzzle Game",
+    "ProductPrice": 10,
+    "ProductCategory": 6,
+    "ProductQuantity": 15
+  },
+  {
+    "Id": 37,
+    "Type": 1,
+    "Date": "2021-10-03",
+    "ProductId": 34,
+    "ProductName": "Doll",
+    "ProductPrice": 12,
+    "ProductCategory": 6,
+    "ProductQuantity": 18
+  },
+  {
+    "Id": 38,
+    "Type": 0,
+    "Date": "2021-11-25",
+    "ProductId": 35,
+    "ProductName": "Banana",
+    "ProductPrice": 1,
+    "ProductCategory": 7,
+    "ProductQuantity": 50
+  },
+  {
+    "Id": 39,
+    "Type": 1,
+    "Date": "2021-12-30",
+    "ProductId": 36,
+    "ProductName": "Coffee",
+    "ProductPrice": 5,
+    "ProductCategory": 7,
+    "ProductQuantity": 20
+  },
+  {
+    "Id": 40,
+    "Type": 0,
+    "Date": "2020-01-14",
+    "ProductId": 37,
+    "ProductName": "Tire",
+    "ProductPrice": 100,
+    "ProductCategory": 8,
+    "ProductQuantity": 6
+  },
+  {
+    "Id": 41,
+    "Type": 1,
+    "Date": "2020-02-02",
+    "ProductId": 38,
+    "ProductName": "Car Battery",
+    "ProductPrice": 75,
+    "ProductCategory": 8,
+    "ProductQuantity": 3
+  },
+  {
+    "Id": 42,
+    "Type": 0,
+    "Date": "2020-03-22",
+    "ProductId": 39,
+    "ProductName": "Marker",
+    "ProductPrice": 1.5,
+    "ProductCategory": 9,
+    "ProductQuantity": 70
+  },
+  {
+    "Id": 43,
+    "Type": 1,
+    "Date": "2020-04-11",
+    "ProductId": 40,
+    "ProductName": "Stapler",
+    "ProductPrice": 8,
+    "ProductCategory": 9,
+    "ProductQuantity": 10
+  },
+  {
+    "Id": 44,
+    "Type": 1,
+    "Date": "2024-11-01",
+    "ProductId": 81,
+    "ProductName": "Potato",
+    "ProductPrice": 10,
+    "ProductCategory": 7,
+    "ProductQuantity": 50
   }
 ]
