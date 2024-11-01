@@ -1,0 +1,39 @@
+﻿@model ProductStorageApp.Models.ProductsModel;
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Products</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="text-primary">
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in Model.Products!)
+                    {
+                        <tr>
+                            <td>@product.Name</td>
+                            <td>@product.Category</td>
+                            <td>@product.Price</td>
+                            <td>@product.Quantity</td>
+                            <td>
+                                <a href="/Products/Details/@product.Id" class="btn btn-outline-primary">Details</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
