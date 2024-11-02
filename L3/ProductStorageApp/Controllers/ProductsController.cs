@@ -9,9 +9,10 @@ public class ProductsController : Controller
 {
     private readonly string productsPath;
 
-    public ProductsController(IWebHostEnvironment webHostEnvironment)
+    public ProductsController(IConfiguration configuration)
     {
-        productsPath = Path.Combine(webHostEnvironment.WebRootPath, "json/products.json");
+        var dataPath = configuration["DataPath"]!;
+        productsPath = Path.Combine(dataPath, "products.json");
     }
 
     // GET /Products

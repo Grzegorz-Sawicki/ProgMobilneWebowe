@@ -10,10 +10,11 @@ namespace ProductStorageApp.Controllers
         private string ordersPath;
         private List<Product> products;
         private List<Order> orders;
-        public ChartController(IWebHostEnvironment webHostEnvironment)
+        public ChartController(IConfiguration configuration)
         {
-            productsPath = Path.Combine(webHostEnvironment.WebRootPath, "json/products.json");
-            ordersPath = Path.Combine(webHostEnvironment.WebRootPath, "json/orders.json");
+            var dataPath = configuration["DataPath"]!;
+            productsPath = Path.Combine(dataPath, "products.json");
+            ordersPath = Path.Combine(dataPath, "orders.json");
 
             products = getObjects<Product>(productsPath);
             orders = getObjects<Order>(ordersPath);
