@@ -12,7 +12,7 @@
         public DateOnly Date { get; set; }
         public int ProductId {  get; set; }
         public string ProductName { get; set; }
-        public int ProductPrice { get; set; }
+        public float ProductPrice { get; set; }
         public ProductCategory ProductCategory { get; set; }
         public int ProductQuantity { get; set; }
     }

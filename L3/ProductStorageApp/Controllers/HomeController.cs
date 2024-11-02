@@ -16,11 +16,12 @@ namespace ProductStorageApp.Controllers
 
         private List<Product> products;
 
-        public HomeController(IWebHostEnvironment webHostEnvironment)
+        public HomeController(IConfiguration configuration)
         {
-            productsPath = Path.Combine(webHostEnvironment.WebRootPath, "json/products.json");
-            ordersPath = Path.Combine(webHostEnvironment.WebRootPath, "json/orders.json");
-            productsIdPath = Path.Combine(webHostEnvironment.WebRootPath, "json/id_products.json");
+            var dataPath = configuration["DataPath"]!;
+            productsPath = Path.Combine(dataPath, "products.json");
+            ordersPath = Path.Combine(dataPath, "orders.json");
+            productsIdPath = Path.Combine(dataPath, "id_products.json");
 
             products = getProducts();
         }

@@ -1,0 +1,49 @@
+﻿@model ProductStorageApp.Models.ProductsDetailsModel;
+
+@{
+    ViewData["Title"] = Model.Product == null ? "Invalid Product" : Model.Product.Name;
+}
+
+@if (Model.Product == null)
+{
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Invalid Product</h5>
+        </div>
+        <div class="card-body">
+            This product does not exits.
+        </div>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">@Model.Product.Name</h5>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <input type="hidden" asp-for="Product.Id" />
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" asp-for="Product.Name" required />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" asp-for="Product.Category"
+                            asp-items="Model.ProductCategories"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="number" class="form-control" asp-for="Product.Price" step="0.01" required />
+                </div>
+                <button type="submit" class="btn btn-primary" asp-action="Save">Edit</button>
+                <button type="submit" class="btn btn-danger" asp-action="Remove">Remove</button>
+            </form>
+        </div>
+    </div>
+}
