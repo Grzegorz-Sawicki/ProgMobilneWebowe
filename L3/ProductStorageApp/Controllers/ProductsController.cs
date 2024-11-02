@@ -44,6 +44,19 @@ public class ProductsController : Controller
         throw new NotImplementedException();
     }
 
+    // POST /Product/Remove
+    [HttpPost]
+    public IActionResult Remove(ProductsDetailsModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            removeProduct(model.Product!);
+            return RedirectToAction("Index");
+        }
+
+        throw new NotImplementedException();
+    }
+
     private Product? getProductById(int id)
     {
         var products = getProducts();
@@ -79,5 +92,15 @@ public class ProductsController : Controller
                 JsonSerializer.Serialize(products, new JsonSerializerOptions { WriteIndented = true }));
 
         return product;
+    }
+
+    private void removeProduct(Product product)
+    {
+        var products = JsonSerializer.Deserialize<List<Product>>(System.IO.File.ReadAllText(productsPath)) ??
+            new List<Product>();
+        products.RemoveAll(p => product.Id == p.Id);
+
+        System.IO.File.WriteAllText(productsPath,
+                JsonSerializer.Serialize(products, new JsonSerializerOptions { WriteIndented = true }));
     }
 }
