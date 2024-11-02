@@ -9,6 +9,8 @@ public class ProductsDetailsModel
     [Required]
     public Product? Product { get; set; }
 
+    public bool IsCreateProduct { get; set; } = false;
+
     public IEnumerable<SelectListItem> ProductCategories { get; set; } =
         Enum.GetValues<ProductCategory>()
             .Select(category => new SelectListItem(category.ToString(), category.ToString()));

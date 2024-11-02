@@ -1,7 +1,18 @@
 ﻿@model ProductStorageApp.Models.ProductsDetailsModel;
 
 @{
-    ViewData["Title"] = Model.Product == null ? "Invalid Product" : Model.Product.Name;
+    if (Model.Product == null)
+    {
+        ViewData["Title"] = "Invalid Product";
+        return;
+    }
+
+    if (Model.IsCreateProduct)
+    {
+        Model.Product.Name = "New Product";
+    }
+
+    ViewData["Title"] = Model.Product.Name;
 }
 
 @if (Model.Product == null)
@@ -41,8 +52,11 @@ else
                     <label>Price</label>
                     <input type="number" class="form-control" asp-for="Product.Price" step="0.01" required />
                 </div>
-                <button type="submit" class="btn btn-primary" asp-action="Save">Edit</button>
-                <button type="submit" class="btn btn-danger" asp-action="Remove">Remove</button>
+                <button type="submit" class="btn btn-primary" asp-action="Save">Save</button>
+                @if (!Model.IsCreateProduct)
+                {
+                    <button type="submit" class="btn btn-danger" asp-action="Remove">Remove</button>
+                }
             </form>
         </div>
     </div>

@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using ProductStorageApp.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Text.Json;
 
 namespace ProductStorageApp.Controllers
@@ -12,24 +8,132 @@ namespace ProductStorageApp.Controllers
     {
         private string productsPath;
         private string ordersPath;
-        private string productsIdPath;
-
         private List<Product> products;
-
+        private List<Order> orders;
         public HomeController(IConfiguration configuration)
         {
             var dataPath = configuration["DataPath"]!;
             productsPath = Path.Combine(dataPath, "products.json");
             ordersPath = Path.Combine(dataPath, "orders.json");
-            productsIdPath = Path.Combine(dataPath, "id_products.json");
 
-            products = getProducts();
+            products = getObjects<Product>(productsPath);
+            orders = getObjects<Order>(ordersPath);
+        }
+        public IActionResult Index()
+        {
+            products = getObjects<Product>(productsPath);
+
+            var viewModel = new ProductOrderModel
+            {
+                Products = products,
+                Orders = orders
+            };
+
+            setUpOrdersByYearChart();
+            setUpOrdersByMonthChart();
+            setUpCategoriesQuantityChart();
+            setUpCategoriesAvgPriceChart();
+
+            return View(viewModel);
         }
 
-        private List<Product> getProducts()
+        private void setUpOrdersByYearChart()
         {
-            var jsonStringProducts = System.IO.File.ReadAllText(productsPath);
-            return JsonSerializer.Deserialize<List<Product>>(jsonStringProducts);
+            // Group orders by year and type, then count them
+            var ordersGroupedByYearAndType = orders
+                .GroupBy(order => new { order.Date.Year, order.Type })
+                .Select(group => new
+                {
+                    Year = group.Key.Year,
+                    Type = group.Key.Type,
+                    Count = group.Count()
+                })
+                .ToList();
+
+            // Prepare lists for incoming and outgoing order counts per year
+            var years = ordersGroupedByYearAndType.Select(o => o.Year).Distinct().OrderBy(y => y).ToList();
+            var incomingCounts = years.Select(year => ordersGroupedByYearAndType
+                                            .FirstOrDefault(o => o.Year == year && o.Type == OrderType.Incoming)?.Count ?? 0)
+                                            .ToList();
+            var outgoingCounts = years.Select(year => ordersGroupedByYearAndType
+                                            .FirstOrDefault(o => o.Year == year && o.Type == OrderType.Outgoing)?.Count ?? 0)
+                                            .ToList();
+
+            // Pass data to the view
+            ViewBag.Years = years;
+            ViewBag.IncomingCounts = incomingCounts;
+            ViewBag.OutgoingCounts = outgoingCounts;
+        }
+
+        private void setUpOrdersByMonthChart()
+        {
+            // Filter orders for the year 2024 and group by month and type
+            var ordersFor2024 = orders
+                .Where(order => order.Date.Year == 2024)
+                .GroupBy(order => new { Month = order.Date.Month, order.Type })
+                .Select(group => new
+                {
+                    Month = group.Key.Month,
+                    Type = group.Key.Type,
+                    Count = group.Count()
+                })
+                .ToList();
+
+            // Prepare lists for each month (1-12) for incoming and outgoing orders
+            var months = Enumerable.Range(1, 12).ToList();
+            var incomingCounts = months
+                .Select(month => ordersFor2024
+                    .FirstOrDefault(o => o.Month == month && o.Type == OrderType.Incoming)?.Count ?? 0)
+                .ToList();
+            var outgoingCounts = months
+                .Select(month => ordersFor2024
+                    .FirstOrDefault(o => o.Month == month && o.Type == OrderType.Outgoing)?.Count ?? 0)
+                .ToList();
+
+            // Pass data to the view
+            ViewBag.Months = months.Select(m => new DateTime(2024, m, 1).ToString("MMMM")).ToList(); // Month names
+            ViewBag.IncomingMonthCounts = incomingCounts;
+            ViewBag.OutgoingMonthCounts = outgoingCounts;
+        }
+
+        private void setUpCategoriesQuantityChart()
+        {
+            var query = products
+                .GroupBy(product => product.Category)
+                .Select(group => new
+                {
+                    Category = group.Key,
+                    CategoryNames = ((ProductCategory)group.Key).ToString(),
+                    TotalQuantity = group.Sum(p => p.Quantity)
+                })
+                .OrderBy(categoryData => categoryData.Category)
+                .ToList();
+
+            ViewBag.Categories = query.Select(q => q.Category).ToList();
+            ViewBag.CategoryNames = query.Select(q => q.CategoryNames).ToList();
+            ViewBag.Quantities = query.Select(q => q.TotalQuantity).ToList();
+        }
+
+        private void setUpCategoriesAvgPriceChart()
+        {
+            var query = products
+                .GroupBy(product => product.Category)
+                .Select(group => new
+                {
+                    Category = group.Key,
+                    CategoryNames = ((ProductCategory)group.Key).ToString(),
+                    AvgPrice = group.Average(p => p.Price)
+                })
+                .OrderBy(categoryData => categoryData.Category)
+                .ToList();
+
+            ViewBag.AvgPrices = query.Select(q => q.AvgPrice).ToList();
+        }
+
+        private List<T> getObjects<T>(string filePath)
+        {
+            var jsonString = System.IO.File.ReadAllText(filePath);
+            return JsonSerializer.Deserialize<List<T>>(jsonString);
         }
         private void writeObjects<T>(List<T> objects, string filePath)
         {
@@ -40,75 +144,5 @@ namespace ProductStorageApp.Controllers
 
             System.IO.File.WriteAllText(filePath, jsonString);
         }
-        public IActionResult Index()
-        {
-            //Products
-            products = getProducts();
-
-            var viewModel = new ProductOrderModel
-            {
-                ProductCategories = new SelectList(Enum.GetValues(typeof(ProductCategory))),
-                Products = products,
-                OrderTypes = new SelectList(Enum.GetValues(typeof(OrderType)))
-            };
-
-            return View(viewModel);
-        }
-
-
-        [HttpPost]
-        public IActionResult AddProduct(Product product)
-        {
-            var jsonString = System.IO.File.ReadAllText(productsPath);
-
-            var objects = JsonSerializer.Deserialize<List<Product>>(jsonString) ?? new List<Product>();
-
-            var idCounterData = JsonSerializer.Deserialize<Dictionary<string, int>>(System.IO.File.ReadAllText(productsIdPath));
-            int nextId = idCounterData["nextId"];
-            product.Id = nextId;
-            objects.Add(product);
-
-            writeObjects(objects, productsPath);
-
-            idCounterData["nextId"] = nextId + 1;
-            System.IO.File.WriteAllText(productsIdPath, JsonSerializer.Serialize(idCounterData));
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public IActionResult CreateOrder(Order order)
-        {
-            //modyfikacja ilości danego produktu
-            int productIdToUpdate = order.ProductId;
-            Product productToUpdate = products.FirstOrDefault(p => p.Id == order.ProductId);
-            if (productToUpdate != null)
-            {
-                if (order.Type == OrderType.Incoming)
-                {
-                    productToUpdate.Quantity += order.ProductQuantity;
-                }
-                else if (order.Type == OrderType.Outgoing && productToUpdate.Quantity >= order.ProductQuantity)
-                {
-                    productToUpdate.Quantity -= order.ProductQuantity;
-                }
-                else //zamówiono więcej produktów niż aktualnie jest
-                {
-                    return RedirectToAction("Index");
-                }
-            }
-
-            var jsonString = System.IO.File.ReadAllText(ordersPath);
-            var objects = JsonSerializer.Deserialize<List<Order>>(jsonString) ?? new List<Order>();
-            order.Id = objects.Any() ? objects.Max(o => o.Id) + 1 : 1;
-            objects.Add(order);
-
-            writeObjects(products, productsPath);
-
-            writeObjects(objects, ordersPath);
-
-            return RedirectToAction("Index");
-        }
-
     }
 }
