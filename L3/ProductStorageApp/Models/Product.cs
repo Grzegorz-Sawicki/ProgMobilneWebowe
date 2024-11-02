@@ -1,4 +1,6 @@
-﻿namespace ProductStorageApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ProductStorageApp.Models
 {
     public enum ProductCategory
     {
@@ -13,12 +15,21 @@
         Automotive,
         OfficeSupplies
     }
+
     public class Product
     {
-        public int Id { get; set; } 
+        public int? Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
-        public float Price { get; set; } 
-        public ProductCategory Category { get; set; } 
+
+        [Required]
+        public float Price { get; set; }
+
+        [Required]
+        public ProductCategory Category { get; set; }
+
+        [Required]
         public int Quantity { get; set; }
     }
 }
