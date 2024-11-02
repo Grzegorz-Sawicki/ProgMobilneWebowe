@@ -1,0 +1,123 @@
+﻿@model ProductStorageApp.Models.OrdersModel;
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<div class="col-md-3" style="padding-left: 0">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Create Order</h5>
+        </div>
+        <div class="card-body">
+            <form id="orderForm" method="post" asp-action="CreateOrder">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select id="orderType" class="form-control" name="Order.Type" asp-items="Model.OrderTypes"></select>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input class="form-control" id="OrderDate" type="date" name="Order.Date"
+                               value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label>Product</label>
+                        <select class="form-control" id="productSelect" name="Order.ProductName"
+                                onchange="updateProductDetails()">
+                            @foreach (var product in Model.Products)
+                            {
+                                <option id="@product.Id" value="@product.Name"
+                                        data-id="@product.Id"
+                                        data-price="@product.Price"
+                                        data-category="@product.Category"
+                                        data-quantity="@product.Quantity">
+                                    @product.Name
+                                </option>
+                            }
+                        </select>
+                        <label id="productQuantityLabel"></label>
+                    </div>
+                    <div class="col">
+                        <label>Quantity</label>
+                        <input id="productQuantity" class="form-control" type="number" name="Order.ProductQuantity" min="1" />
+                        <input type="hidden" id="productId" name="Order.ProductId" />
+                        <input type="hidden" id="productPrice" name="Order.ProductPrice" />
+                        <input type="hidden" id="productCategory" name="Order.ProductCategory" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Orders</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="text-primary">
+                    <tr>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.Orders!)
+                    {
+                        <tr>
+                            <td>@order.Type</td>
+                            <td>@order.Date</td>
+                            <td>@order.ProductName</td>
+                            <td>@order.ProductPrice</td>
+                            <td>@order.ProductQuantity</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateProductDetails() {
+        const select = document.getElementById('productSelect');
+        const selectedOption = select.options[select.selectedIndex];
+
+        document.getElementById('productId').value = selectedOption.getAttribute('data-id');
+        document.getElementById('productPrice').value = selectedOption.getAttribute('data-price');
+        document.getElementById('productCategory').value = selectedOption.getAttribute('data-category');
+        document.getElementById('productQuantityLabel').innerHTML = "current quantity: " + selectedOption.getAttribute("data-quantity");
+    }
+
+    updateProductDetails();
+
+    document.getElementById("orderForm").addEventListener("submit", function (event) {
+        const select = document.getElementById('productSelect');
+        const selectedOption = select.options[select.selectedIndex];
+
+        var maxQuantity = parseInt(selectedOption.getAttribute("data-quantity"));
+        var enteredQuantity = parseInt(document.getElementById("productQuantity").value);
+        var orderType = document.getElementById("orderType").value;
+
+        console.log(orderType);
+
+        if (orderType == "Outgoing" && enteredQuantity > maxQuantity) {
+            event.preventDefault();
+            alert("--Form Not Sent--\nThe quantity of products in an Outgoing order cannot exceed the current quantity");
+        }
+    })
+</script>
