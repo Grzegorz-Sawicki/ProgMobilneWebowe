@@ -22,6 +22,19 @@ public class ProductsController : Controller
         return View(new ProductsModel(products));
     }
 
+    // GET /Products/Details/{id}
+    public IActionResult Details(int id)
+    {
+        var product = getProductById(id);
+        return View(new ProductsDetailsModel(product));
+    }
+
+    private Product? getProductById(int id)
+    {
+        var products = getProducts();
+        return products.Find(product => product.Id == id);
+    }
+
     private List<Product> getProducts()
     {
         var jsonStringProducts = System.IO.File.ReadAllText(productsPath);
