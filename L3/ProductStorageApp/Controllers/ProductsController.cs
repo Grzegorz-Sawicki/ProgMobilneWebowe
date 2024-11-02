@@ -24,10 +24,17 @@ public class ProductsController : Controller
         return View(new ProductsModel(products));
     }
 
-    // GET /Products/Details/{id}
-    public IActionResult Details(int id)
+    // GET /Products/Details/{id?}
+    public IActionResult Details(int? id)
     {
-        var product = getProductById(id);
+        if (id == null)
+        {
+            var model = new ProductsDetailsModel(new Product());
+            model.IsCreateProduct = true;
+            return View(model);
+        }
+
+        var product = getProductById((int)id!);
         return View(new ProductsDetailsModel(product));
     }
 
@@ -75,7 +82,12 @@ public class ProductsController : Controller
         if (product.Id == null)
         {
             var productsId = JsonSerializer.Deserialize<Dictionary<string, int>>(System.IO.File.ReadAllText(productsIdPath))!;
-            var id = productsId["nextId"];
+
+            int id;
+            if (!productsId.TryGetValue("nextId", out id))
+            {
+                id = 1;
+            }
 
             product.Id = id;
 

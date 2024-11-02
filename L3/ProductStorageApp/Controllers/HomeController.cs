@@ -12,7 +12,6 @@ namespace ProductStorageApp.Controllers
     {
         private string productsPath;
         private string ordersPath;
-        private string productsIdPath;
 
         private List<Product> products;
 
@@ -21,7 +20,6 @@ namespace ProductStorageApp.Controllers
             var dataPath = configuration["DataPath"]!;
             productsPath = Path.Combine(dataPath, "products.json");
             ordersPath = Path.Combine(dataPath, "orders.json");
-            productsIdPath = Path.Combine(dataPath, "id_products.json");
 
             products = getProducts();
         }
@@ -53,27 +51,6 @@ namespace ProductStorageApp.Controllers
             };
 
             return View(viewModel);
-        }
-
-
-        [HttpPost]
-        public IActionResult AddProduct(Product product)
-        {
-            var jsonString = System.IO.File.ReadAllText(productsPath);
-
-            var objects = JsonSerializer.Deserialize<List<Product>>(jsonString) ?? new List<Product>();
-
-            var idCounterData = JsonSerializer.Deserialize<Dictionary<string, int>>(System.IO.File.ReadAllText(productsIdPath));
-            int nextId = idCounterData["nextId"];
-            product.Id = nextId;
-            objects.Add(product);
-
-            writeObjects(objects, productsPath);
-
-            idCounterData["nextId"] = nextId + 1;
-            System.IO.File.WriteAllText(productsIdPath, JsonSerializer.Serialize(idCounterData));
-
-            return RedirectToAction("Index");
         }
 
         [HttpPost]
