@@ -37,7 +37,8 @@ public class ProductsController : Controller
 
     private List<Product> getProducts()
     {
-        var jsonStringProducts = System.IO.File.ReadAllText(productsPath);
-        return JsonSerializer.Deserialize<List<Product>>(jsonStringProducts)!;
+        var products = JsonSerializer.Deserialize<List<Product>>(System.IO.File.ReadAllText(productsPath))!;
+        products.Sort((a, b) => a.Name.CompareTo(b.Name));
+        return products;
     }
 }
