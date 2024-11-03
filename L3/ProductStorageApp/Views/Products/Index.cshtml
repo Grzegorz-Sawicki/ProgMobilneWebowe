@@ -7,7 +7,26 @@
 <div class="card">
     <div class="card-header">
         <h5 class="card-title">Products</h5>
-        <a href="/Products/Details" class="btn btn-primary">Add product</a>
+        <form method="get" asp-action="Index">
+            <div class="form-row align-items-center">
+                <div class="col-auto form-group">
+                    <label>Name</label>
+                    <input class="form-control" type="text" name="name" value="@Model.SearchName" />
+                </div>
+                <div class="col-auto form-group">
+                    <label>Category</label>
+                    <select class="form-control" name="category" asp-items="Model.ProductCategories">
+                        <option disabled selected value="">Category</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-auto form-group">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    <a href="/Products/Details" class="btn btn-outline-primary">Add product</a>
+                </div>
+            </div>
+        </form>
     </div>
     <div class="card-body">
         <div class="table-responsive">

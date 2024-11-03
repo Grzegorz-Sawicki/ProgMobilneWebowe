@@ -18,10 +18,24 @@ public class ProductsController : Controller
     }
 
     // GET /Products
-    public IActionResult Index(int? id)
+    public IActionResult Index(string? name, string? category)
     {
         var products = getProducts();
-        return View(new ProductsModel(products));
+
+        if (name != null)
+        {
+            products = products.Where(product => product.Name.ToLower()
+                        .StartsWith(name.ToLower()));
+        }
+
+        if (category != null)
+        {
+            products = products.Where(product => product.Category.ToString() == category);
+        }
+
+        var model = new ProductsModel(products);
+        model.SearchName = name;
+        return View(model);
     }
 
     // GET /Products/Details/{id?}
@@ -74,10 +88,10 @@ public class ProductsController : Controller
     private Product? getProductById(int id)
     {
         var products = getProducts();
-        return products.Find(product => product.Id == id);
+        return products.First(product => product.Id == id);
     }
 
-    private List<Product> getProducts()
+    private IEnumerable<Product> getProducts()
     {
         var products = JsonSerializer.Deserialize<List<Product>>(System.IO.File.ReadAllText(productsPath))!;
         products.Sort((a, b) => a.Name.CompareTo(b.Name));
