@@ -44,8 +44,15 @@ public class ProductsController : Controller
     {
         if (ModelState.IsValid)
         {
-            var product = saveProduct(model.Product!);
-            return RedirectToAction("Details", new { id = product.Id });
+            var previous = getProductById((int)model.Product!.Id!);
+            var saved = model.Product!;
+            if (previous != null)
+            {
+                saved.Quantity = previous.Quantity;
+            }
+
+            saved = saveProduct(saved);
+            return RedirectToAction("Details", new { id = saved.Id });
         }
 
         throw new NotImplementedException();
