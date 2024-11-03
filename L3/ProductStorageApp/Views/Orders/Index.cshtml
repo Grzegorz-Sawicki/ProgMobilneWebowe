@@ -65,18 +65,18 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table">
+            <table id="orderTable" class="table">
                 <thead class="text-primary">
                     <tr>
-                        <th>Type</th>
+                        <th onclick="sortTable(0)">Type</th>
                         <th>Date</th>
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
+                        <th onclick="sortTable(2)">Product</th>
+                        <th onclick="sortTable(3, 'number')">Price</th>
+                        <th onclick="sortTable(4, 'number')">Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var order in Model.Orders!)
+                    @foreach (var order in Model.Orders)
                     {
                         <tr>
                             <td>@order.Type</td>
@@ -120,4 +120,35 @@
             alert("--Form Not Sent--\nThe quantity of products in an Outgoing order cannot exceed the current quantity");
         }
     })
+
+    function sortTable(columnIndex) {
+        var table = document.getElementById("orderTable");
+        var rows = Array.from(table.rows).slice(1);
+        var isAscending = !table.rows[0].cells[columnIndex].classList.contains("asc");
+
+        rows.sort((rowA, rowB) => {
+            let cellA = rowA.cells[columnIndex].innerText;
+            let cellB = rowB.cells[columnIndex].innerText;
+
+            if (!isNaN(cellA) && !isNaN(cellB)) {
+                return isAscending ? cellA - cellB : cellB - cellA;
+            }
+            return isAscending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+        });
+
+        Array.from(table.rows[0].cells).forEach(cell => cell.classList.remove("asc", "desc"));
+        table.rows[0].cells[columnIndex].classList.add(isAscending ? "asc" : "desc");
+
+        rows.forEach(row => table.appendChild(row));
+    }
 </script>
+
+<style>
+    .asc::after {
+        content: " ▲";
+    }
+
+    .desc::after {
+        content: " ▼";
+    }
+</style>
