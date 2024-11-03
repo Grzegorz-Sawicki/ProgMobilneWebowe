@@ -58,7 +58,7 @@ public class ProductsController : Controller
     {
         if (ModelState.IsValid)
         {
-            var previous = getProductById((int)model.Product!.Id!);
+            var previous = model.Product?.Id != null ? getProductById((int)model.Product.Id) : null;
             var saved = model.Product!;
             if (previous != null)
             {
@@ -88,7 +88,7 @@ public class ProductsController : Controller
     private Product? getProductById(int id)
     {
         var products = getProducts();
-        return products.First(product => product.Id == id);
+        return products.FirstOrDefault(product => product.Id == id);
     }
 
     private IEnumerable<Product> getProducts()

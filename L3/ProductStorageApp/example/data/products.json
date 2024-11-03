@@ -91,13 +91,6 @@
     "Quantity": 22
   },
   {
-    "Id": 14,
-    "Name": "Action Figure",
-    "Price": 15,
-    "Category": 6,
-    "Quantity": 40
-  },
-  {
     "Id": 15,
     "Name": "Apple",
     "Price": 1,
@@ -565,5 +558,19 @@
     "Price": 10,
     "Category": 7,
     "Quantity": 50
+  },
+  {
+    "Id": 82,
+    "Name": "aa",
+    "Price": 5,
+    "Category": 0,
+    "Quantity": 0
+  },
+  {
+    "Id": 14,
+    "Name": "Action Figure",
+    "Price": 10,
+    "Category": 6,
+    "Quantity": 40
   }
 ]
