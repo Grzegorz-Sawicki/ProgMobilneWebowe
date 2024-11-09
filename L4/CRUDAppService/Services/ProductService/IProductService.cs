@@ -8,13 +8,13 @@ namespace CRUDAppService.Services.ProductService
 {
     public interface IProductService
     {
-        Task<ServiceReponse<List<Product>>> GetProductsAsync();
-        Task<ServiceReponse<Product>> CreateProductAsync(Product newProduct);
-        Task<ServiceReponse<bool>> DeleteProductAsync(int id);
-        Task<ServiceReponse<Product>> UpdateProductAsync(Product updatedProduct);
-        Task<ServiceReponse<Product>> GetProductAsync(int id);
+        Task<ServiceResponse<List<Product>>> GetProductsAsync();
+        Task<ServiceResponse<Product>> CreateProductAsync(Product newProduct);
+        Task<ServiceResponse<bool>> DeleteProductAsync(int id);
+        Task<ServiceResponse<Product>> UpdateProductAsync(Product updatedProduct);
+        Task<ServiceResponse<Product>> GetProductAsync(int id);
 
-        Task<ServiceReponse<List<Product>>> SearchProductsAsync(string text, int page, int pageSize);
+        Task<ServiceResponse<List<Product>>> SearchProductsAsync(string text, int page, int pageSize);
      
     }
 }

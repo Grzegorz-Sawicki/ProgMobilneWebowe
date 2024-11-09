@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRUDAppService
 {
-    public class ServiceReponse<T>
+    public class ServiceResponse<T>
     {
         public T? Data { get; set; } = default;
         public bool Success { get; set; } = false;

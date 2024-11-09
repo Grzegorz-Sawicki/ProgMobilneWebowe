@@ -4,6 +4,7 @@ using CRUDAppService.Services.ProductService;
 using MAUIAppCRUD.MessageBox;
 using Microsoft.Extensions.Logging;
 using MAUIAppCRUD.ViewModels;
+using CRUDAppService.Services;
 namespace MAUIAppCRUD
 {
     public static class MauiProgram
@@ -39,6 +40,7 @@ namespace MAUIAppCRUD
         {
             services.AddSingleton<IProductService, ProductService>();
             services.AddSingleton<IMessageDialogService, MauiMessageDialogService>();
+            services.AddSingleton<IFileService, FileService>();
 
         }
 
