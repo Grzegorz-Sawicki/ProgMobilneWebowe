@@ -18,7 +18,7 @@
             <CollectionView ItemsSource="{Binding Products}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BackgroundColor="Red" Padding="10" Margin="5">
+                        <Frame BackgroundColor="AntiqueWhite"  Padding="10" Margin="5">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer 
                                  Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProductsViewModel}}, Path=ShowDetailsCommand }" 
@@ -42,7 +42,7 @@
                                 <!-- Drugi wiersz -->
                                 <Label Grid.Row="1" Text="{Binding Description}"></Label>
 
-                                <!-- Trzeci wiersz wiersz -->
+                                <!-- Trzeci wiersz -->
                                 <HorizontalStackLayout Grid.Row="2">
                                     <Label Text="Barcode:"></Label>
                                     <Label Text="{Binding Barcode}"></Label>
@@ -50,13 +50,13 @@
                                     <Label Text=" Price:"></Label>
                                     <Label Text="{Binding Price, StringFormat='{0} zł'}"></Label>
 
-                                    <Label Text=" ReleaseDate:"></Label>
-                                    <Label Text="{Binding ReleaseDate, StringFormat='{0: dd MM yyyy}'}"></Label>
+                                    
                                 </HorizontalStackLayout>
-                                <!--<Button Grid.Row="3"
-      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProductsViewModel}}, Path=ShowDetailsCommand }" 
-       CommandParameter="{Binding}"
-        Text="Edit"></Button>-->
+
+                                <HorizontalStackLayout Grid.Row="3">
+                                    <Label Text="ReleaseDate:"></Label>
+                                    <Label Grid.Row="3" Text="{Binding ReleaseDate, StringFormat='{0: dd MM yyyy}'}"></Label>
+                                </HorizontalStackLayout>
                             </Grid>
                         </Frame>
 

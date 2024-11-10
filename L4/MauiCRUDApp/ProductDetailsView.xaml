@@ -33,7 +33,6 @@
             <Entry Text="{Binding ReleaseDate}"  Grid.Row="4" Grid.Column="1" ></Entry>
         </Grid>
         <HorizontalStackLayout>
-            <Button Text="Speck" Command="{Binding RecognizeVoiceCommand}"></Button>
             <Button Text="Save" Command="{Binding SaveCommand}"></Button>
             <Button Text="Delete" Command="{Binding DeleteCommand}"></Button>
         </HorizontalStackLayout>
