@@ -25,7 +25,7 @@ namespace MAUIAppCRUD.ViewModels
         [ObservableProperty]
         private Product _selectedProduct;
 
-
+        public string SearchText { get; set; }
 
         public ProductsViewModel(IProductService productService, IMessageDialogService messageDialogService)
         {
@@ -37,9 +37,19 @@ namespace MAUIAppCRUD.ViewModels
 
         public async Task GetProductsAsync()
         {
-
-
             var result = await _productService.GetProductsAsync();
+            if (result.Success)
+            {
+                Products = new ObservableCollection<Product>(result.Data);
+            }
+        }
+
+
+
+        [RelayCommand]
+        public async Task Search()
+        {
+            var result = await _productService.SearchProductsAsync(SearchText);
             if (result.Success)
             {
                 Products = new ObservableCollection<Product>(result.Data);
@@ -53,8 +63,6 @@ namespace MAUIAppCRUD.ViewModels
         {
 
             SelectedProduct = product;
-
-
 
             await Shell.Current.GoToAsync(nameof(ProductDetailsView), true, new Dictionary<string, object>
             {

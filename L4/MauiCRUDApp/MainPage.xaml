@@ -15,6 +15,11 @@
             Text="New Product" Command="{Binding NewCommand}"
             ></Button>
 
+            <Entry Placeholder="Search..."
+                   Text="{Binding SearchText}" />
+
+            <Button Text="Search" Command="{Binding SearchCommand}" />
+
             <CollectionView ItemsSource="{Binding Products}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

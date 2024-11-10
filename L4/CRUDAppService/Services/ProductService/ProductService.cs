@@ -45,7 +45,7 @@ namespace CRUDAppService.Services.ProductService
             products.Add(newProduct);
             await SaveProductsAsync(products);
 
-            return new ServiceResponse<Product> { Data = newProduct, Success = true };
+            return new ServiceResponse<Product> { Data = newProduct, Success = true, Message = "Product added!" };
         }
 
         public async Task<ServiceResponse<bool>> DeleteProductAsync(int id)
@@ -75,6 +75,8 @@ namespace CRUDAppService.Services.ProductService
             product.Title = updatedProduct.Title;
             product.Description = updatedProduct.Description;
             product.Price = updatedProduct.Price;
+            product.Barcode = updatedProduct.Barcode;
+            product.ReleaseDate = updatedProduct.ReleaseDate;
 
             await SaveProductsAsync(products);
 
@@ -94,13 +96,14 @@ namespace CRUDAppService.Services.ProductService
             return new ServiceResponse<Product> { Data = product, Success = true };
         }
 
-        public async Task<ServiceResponse<List<Product>>> SearchProductsAsync(string text, int page, int pageSize)
+        public async Task<ServiceResponse<List<Product>>> SearchProductsAsync(string text)
         {
             var products = await LoadProductsAsync();
+            if (text == null || text == "") return new ServiceResponse<List<Product>> { Data = products, Success = true };
+
             var filteredProducts = products
-                .Where(p => p.Title.Contains(text, StringComparison.OrdinalIgnoreCase) || p.Description.Contains(text, StringComparison.OrdinalIgnoreCase))
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
+                .Where(p => (p.Title != null && p.Title.Contains(text, StringComparison.OrdinalIgnoreCase)) ||
+                (p.Description != null && p.Description.Contains(text, StringComparison.OrdinalIgnoreCase)))
                 .ToList();
 
             return new ServiceResponse<List<Product>> { Data = filteredProducts, Success = true };

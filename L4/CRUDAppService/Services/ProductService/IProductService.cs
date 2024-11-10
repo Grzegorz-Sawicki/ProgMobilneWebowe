@@ -14,7 +14,7 @@ namespace CRUDAppService.Services.ProductService
         Task<ServiceResponse<Product>> UpdateProductAsync(Product updatedProduct);
         Task<ServiceResponse<Product>> GetProductAsync(int id);
 
-        Task<ServiceResponse<List<Product>>> SearchProductsAsync(string text, int page, int pageSize);
+        Task<ServiceResponse<List<Product>>> SearchProductsAsync(string text);
      
     }
 }
