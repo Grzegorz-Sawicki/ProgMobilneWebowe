@@ -40,27 +40,27 @@
 
                                 <!-- Pierwszy wiersz -->
                                 <HorizontalStackLayout Grid.Row="0">
-                                    <Label Text="{Binding Id}"></Label>
-                                    <Label Text="{Binding Title}"></Label>
+                                    <Label TextColor="Black" Text="{Binding Id}"></Label>
+                                    <Label TextColor="Black" Text="{Binding Title}"></Label>
                                 </HorizontalStackLayout>
 
                                 <!-- Drugi wiersz -->
-                                <Label Grid.Row="1" Text="{Binding Description}"></Label>
+                                <Label Grid.Row="1" TextColor="Black" Text="{Binding Description}"></Label>
 
                                 <!-- Trzeci wiersz -->
                                 <HorizontalStackLayout Grid.Row="2">
-                                    <Label Text="Barcode:"></Label>
-                                    <Label Text="{Binding Barcode}"></Label>
+                                    <Label TextColor="Black" Text="Barcode:"></Label>
+                                    <Label TextColor="Black" Text="{Binding Barcode}"></Label>
 
-                                    <Label Text=" Price:"></Label>
-                                    <Label Text="{Binding Price, StringFormat='{0} zł'}"></Label>
+                                    <Label TextColor="Black" Text=" Price:"></Label>
+                                    <Label TextColor="Black" Text="{Binding Price, StringFormat='{0} zł'}"></Label>
 
                                     
                                 </HorizontalStackLayout>
 
                                 <HorizontalStackLayout Grid.Row="3">
-                                    <Label Text="ReleaseDate:"></Label>
-                                    <Label Grid.Row="3" Text="{Binding ReleaseDate, StringFormat='{0: dd MM yyyy}'}"></Label>
+                                    <Label TextColor="Black" Text="ReleaseDate:"></Label>
+                                    <Label TextColor="Black" Grid.Row="3" Text="{Binding ReleaseDate, StringFormat='{0: dd MM yyyy}'}"></Label>
                                 </HorizontalStackLayout>
                             </Grid>
                         </Frame>

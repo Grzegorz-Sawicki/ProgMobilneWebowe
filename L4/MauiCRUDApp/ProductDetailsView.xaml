@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIAppCRUD.ProductDetailsView"
              Title="ProductDetailsView">
-    <VerticalStackLayout>
+    <VerticalStackLayout
+        Padding="20">
         <Grid BindingContext="{Binding Product}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
