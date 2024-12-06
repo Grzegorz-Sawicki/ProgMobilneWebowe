@@ -1,0 +1,26 @@
+@model L5Mvc.Models.DirectorsViewModel
+@{
+    ViewData["Title"] = "Directors";
+}
+
+<div class="container">
+    <div class="row my-4">
+        <h1>Directors</h1>
+    </div>
+    <div class="row">
+        <ul class="list-group">
+            @foreach (var director in Model.Directors)
+            {
+                <li class="list-group-item">@director.Name</li>
+            }
+            <li class="list-group-item">
+                <form asp-action="Index" method="post">
+                    <div class="input-group">
+                        <input asp-for="Name" placeholder="Name" class="form-control" />
+                        <button type="submit" class="btn btn-success">Add</button>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>

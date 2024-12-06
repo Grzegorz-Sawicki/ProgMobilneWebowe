@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="L5MAUI.MainPage"
+             xmlns:viewmodel="clr-namespace:L5MAUI.ViewModels">
+
+    <ScrollView>
+        <VerticalStackLayout
+Padding="30,0"
+Spacing="25">
+
+
+            <Button Text="Add Movie" Command="{Binding NewCommand}" />
+
+            <!-- Movie List -->
+            <CollectionView ItemsSource="{Binding Movies}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gray" Padding="10" Margin="5" CornerRadius="10">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MoviesViewModel}}, Path=ShowDetailsCommand }" 
+                                 CommandParameter="{Binding}"
+                                ></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="18" />
+                                <Label Text="{Binding DirectorName}" FontSize="14" />
+                                <!--
+                                <Label Text="{Binding Actors, Converter={StaticResource ActorsToStringConverter}}" FontSize="14" LineBreakMode="TailTruncation" />
+                                -->
+                                <Label Text="{Binding ReleaseDate, StringFormat='Release Date: {0:dd MMMM yyyy}'}" FontSize="12" />
+                                <Label Text="{Binding Length, StringFormat='Length: {0} mins'}" FontSize="12" />
+                                <Label Text="{Binding Rating, StringFormat='Rating: {0:F1}'}" FontSize="12" />
+                                <Label Text="{Binding Review, StringFormat='Review: {0}'}" FontSize="12" LineBreakMode="TailTruncation" MaxLines="2" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

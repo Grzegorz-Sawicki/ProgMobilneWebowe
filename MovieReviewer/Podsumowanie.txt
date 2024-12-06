@@ -1,0 +1,34 @@
+﻿Tworzymy bazę danych w podejściu Code-First 
+
+1) Stworzenie DataContext
+2) Dodanie paczek: 
+    - Microsoft.EntityFrameworkCore - wykorzystywane do tworzenia data kontekstu
+	- Microsoft.EntityFrameworkCore.SqlServer - wykorzystywane do komunikacji z bazą danych sql server
+	- Microsoft.EntityFrameworkCore.Design - wykorzystywane do migracji
+3) Sposórd rozwiązń: data annotations i fluent api wybieramy : fluent api
+ - konfigurujemy data context
+ - dokumentacja w : https://www.entityframeworktutorial.net/efcore/
+ - okreslamy connectionString w appsettings.json
+ - w program.cs konfigurujemy data context i connectionString
+
+4) Przeprowadzamy migracje
+ - potrzebujemy zainstalować narzędzie: dotnet ef (dotnet tool install --global dotnet-ef))
+ - aktualizacja dotnet ef (dotnet tool update --global dotnet-ef)
+
+ - dodajemy migracje (dotnet ef migrations add InitialCreate)
+ - gdy chcemy cognąc migracje (dotnet ef migrations remove)
+ - Net 8. w przypadlu bledu cofania migragarcji ustawiamy <InvariantGlobalization>false</InvariantGlobalization>
+ - aktualizujemy baze danych (dotnet ef database update)
+ - dodajemy nowe kolumny do Produktu, aktualizaujemy dataSeeder i dodajemy nowa migracje z danymi Inicializujacymi
+ - przeprowadzilismy test cofania sie do przedostaniej migracji i ponownego aktualizowania bazy danych
+
+ 5) Rozbudowa API o:
+	- serwis z obsługą CRUD 
+	- kontroler z obsługą CRUD zgodnie z REST
+	- testujemy API w Postmanie
+
+6) Rozbudowa klienta o:
+	- serwis z obsługą CRUD 
+	- aktualizacja ProductsViewModel
+	- dodanie widoków w xaml  
+	  - dodanie opcji ukrywania okienka szczegółów zamiast usuwania

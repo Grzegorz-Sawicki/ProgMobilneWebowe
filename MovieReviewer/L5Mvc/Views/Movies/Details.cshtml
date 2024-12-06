@@ -1,0 +1,68 @@
+@model L5Mvc.Models.MovieViewModel
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<div class="container">
+    <div class="row my-4">
+        <h1>Movie</h1>
+    </div>
+    <form asp-action="Details" method="post">
+        <input asp-for="Id" hidden />
+        <div class="row mb-3">
+            <div class="col">
+                <div class="form-floating">
+                    <input asp-for="Title" class="form-control" />
+                    <label asp-for="Title">Title</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating">
+                    <select asp-for="DirectorId" asp-items="Model.AllDirectors" class="form-select"></select>
+                    <label asp-for="DirectorId">Director</label>
+                </div>
+            </div>
+        </div>
+        <div class=" row mb-3">
+            <div class="col">
+                <div class="form-floating">
+                    <input asp-for="Length" class="form-control" />
+                    <label asp-for="Length">Length</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating">
+                    <input asp-for="ReleaseDate" class="form-control" />
+                    <label asp-for="ReleaseDate">Release Date</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <div class="form-floating">
+                    <select asp-for="ActorIds" asp-items="Model.AllActors" class="form-select"
+                        style="height: 15rem"></select>
+                    <label asp-for="ActorIds">Actors</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <div class="form-floating">
+                    <input asp-for="Rating" class="form-control" />
+                    <label asp-for="Rating">Rating</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <div class="form-floating">
+                    <textarea asp-for="Review" class="form-control"></textarea>
+                    <label asp-for="Review">Review</label>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary">Submit</button>
+        <a href="/Movies" class="btn btn-danger">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,6 @@
+@L5API_HostAddress = http://localhost:5174
+
+GET {{L5API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L5MAUI", "L5MAUI.csproj", "{0FF7EE2D-D17E-470A-BBB8-6D8F0DDFF604}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L5Shared", "..\L5Shared\L5Shared.csproj", "{73CDEEBD-CF7D-4CA1-A06B-3DA622E5008A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FF7EE2D-D17E-470A-BBB8-6D8F0DDFF604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF7EE2D-D17E-470A-BBB8-6D8F0DDFF604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF7EE2D-D17E-470A-BBB8-6D8F0DDFF604}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0FF7EE2D-D17E-470A-BBB8-6D8F0DDFF604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF7EE2D-D17E-470A-BBB8-6D8F0DDFF604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF7EE2D-D17E-470A-BBB8-6D8F0DDFF604}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{73CDEEBD-CF7D-4CA1-A06B-3DA622E5008A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73CDEEBD-CF7D-4CA1-A06B-3DA622E5008A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73CDEEBD-CF7D-4CA1-A06B-3DA622E5008A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73CDEEBD-CF7D-4CA1-A06B-3DA622E5008A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B812BF23-BE9A-494C-AC8B-D6ED94B8FFC6}
+	EndGlobalSection
+EndGlobal

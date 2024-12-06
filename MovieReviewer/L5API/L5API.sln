@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L5API", "L5API.csproj", "{6291F682-1332-4777-8D9C-1E603C1055E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L5Shared", "..\L5Shared\L5Shared.csproj", "{29D71F97-F58A-4EEF-BE7F-EB91B924BDDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6291F682-1332-4777-8D9C-1E603C1055E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6291F682-1332-4777-8D9C-1E603C1055E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6291F682-1332-4777-8D9C-1E603C1055E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6291F682-1332-4777-8D9C-1E603C1055E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29D71F97-F58A-4EEF-BE7F-EB91B924BDDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D71F97-F58A-4EEF-BE7F-EB91B924BDDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D71F97-F58A-4EEF-BE7F-EB91B924BDDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D71F97-F58A-4EEF-BE7F-EB91B924BDDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2D393D7-3155-48EF-9696-D25D9305A4D1}
+	EndGlobalSection
+EndGlobal

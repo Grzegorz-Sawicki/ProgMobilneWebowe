@@ -1,0 +1,51 @@
+@model L5Mvc.Models.MoviesViewModel
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<div class="container">
+    <div class="row my-4">
+        <h1>Movies</h1>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var movie in Model.Movies)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title fs-4 fw-bold">@movie.Title</h2>
+                        <div class="card-text">
+                            Director: @movie?.Director?.Name <br />
+                            Actors:
+                            <ul>
+                                @foreach (var actor in movie?.Actors)
+                                {
+                                    <li>@actor?.Name</li>
+                                }
+                            </ul>
+                            <div>
+                                <em>@movie.Rating / 5</em>
+                                @movie.Review
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/Movies/Details/@movie.Id" class="btn btn-primary">Details</a>
+                        <a href="/Movies/Delete/@movie.Id" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title fs-4 fw-bold mb-1">New Movie</h2>
+                    <div class="card-text">Add a new movie</div>
+                </div>
+                <div class="card-footer">
+                    <a href="/Movies/Details" class="btn btn-success">Add</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
