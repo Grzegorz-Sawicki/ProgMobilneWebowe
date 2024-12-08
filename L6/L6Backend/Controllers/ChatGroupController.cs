@@ -48,13 +48,7 @@ namespace L6Backend.Controllers
                         Username = message.User.Name,
                         PostDate = message.PostDate
                     }).ToList() : new List<MessageDTO>()
-                },
-                Users = cg.Users.Select(user => new UserDTO
-                {
-                    Id = user.Id,
-                    Name = user.Name
-
-                }).ToList()
+                }
             }).ToList();
 
             return chatGroupDTOs;
@@ -91,13 +85,7 @@ namespace L6Backend.Controllers
                         Username = message.User.Name,
                         PostDate = message.PostDate
                     }).ToList() : new List<MessageDTO>()
-                },
-                Users = chatGroup.Users.Select(user => new UserDTO
-                {
-                    Id = user.Id,
-                    Name = user.Name
-
-                }).ToList()
+                }
             };
 
             return chatGroupDTO;
@@ -122,8 +110,7 @@ namespace L6Backend.Controllers
                 {
                     Id = chatGroup.Chat.Id,
                     Messages = new List<MessageDTO>()
-                },
-                Users = new List<UserDTO>()
+                }
             };
 
             return CreatedAtAction(nameof(GetChatGroup), new { id = chatGroup.Id }, chatGroupDTO);

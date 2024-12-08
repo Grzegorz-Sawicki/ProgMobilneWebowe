@@ -41,34 +41,38 @@ export default function Home() {
 
   const handleLogin = async () => {
     const response = await axios.post('/api/user', { name: username });
-    setUser(response.data);
+    const user = response.data; // Bezpośrednie przypisanie odpowiedzi do zmiennej user
+    setUser(user);
 
     const newConnection = new signalR.HubConnectionBuilder()
-      .withUrl('http://localhost:5000/chathub')
-      .withAutomaticReconnect()
-      .build();
+        .withUrl('http://localhost:5000/chathub')
+        .withAutomaticReconnect()
+        .build();
 
     newConnection.start()
-      .then(() => {
-        setConnection(newConnection);
+        .then(() => {
+            setConnection(newConnection);
 
-        // Wywołaj metodę AssignUserToGroups w hubie SignalR
-        //newConnection.invoke('AssignUserToGroups', user.id);
+            const createdGroupHandler = (name) => {
+                console.log(`New group was created: ${name}`);
+                axios.get('/api/chatgroup').then(response => {
+                    setGroups(response.data);
+                });
+            };
 
-        const createdGroupHandler = (name) => {
-          console.log(`New group was created: ${name}`);
-          axios.get('/api/chatgroup').then(response => {
-            setGroups(response.data);
-          });
-        };
+            newConnection.off("CreatedGroup");
+            newConnection.on("CreatedGroup", createdGroupHandler);
 
-        newConnection.off("CreatedGroup");
-        newConnection.on("CreatedGroup", createdGroupHandler);
-      })
-      .catch(err => console.error(err.toString()));
+            for (const groupId of user.chatGroupIds) {
+              console.log(`groupid = ${groupId}`);
+              console.log(`user = ${user.name} `);
+              handleJoinGroup(groupId, user, newConnection) // Wywołaj JoinGroup dla każdej grupy
+            }
+        })
+        .catch(err => console.error(err.toString()));
   };
 
-  const handleJoinGroup = async (groupId) => {
+  const handleJoinGroup = async (groupId, user, connection) => {
     const group = await axios.get(`/api/chatgroup/${groupId}`).then(response => response.data);
 
     // Sprawdź, czy użytkownik już jest w grupie
@@ -170,7 +174,7 @@ export default function Home() {
       <ul>
         {groups.map(group => (
           <li key={group.id}>
-            <button onClick={() => handleJoinGroup(group.id)}>{group.name}</button>
+            <button onClick={() => handleJoinGroup(group.id, user, connection)}>{group.name}</button>
           </li>
         ))}
       </ul>

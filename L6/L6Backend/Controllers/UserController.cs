@@ -30,7 +30,8 @@ namespace L6Backend.Controllers
             var userDTOs = users.Select(u => new UserDTO
             {
                 Id = u.Id,
-                Name = u.Name
+                Name = u.Name,
+                ChatGroupIds = u.ChatGroups.Select(cg => cg.Id).ToList()
             }).ToList();
 
             return userDTOs;
@@ -52,7 +53,8 @@ namespace L6Backend.Controllers
             var userDTO = new UserDTO
             {
                 Id = user.Id,
-                Name = user.Name
+                Name = user.Name,
+                ChatGroupIds = user.ChatGroups.Select(cg => cg.Id).ToList()
             };
 
             return userDTO;
@@ -62,6 +64,7 @@ namespace L6Backend.Controllers
         public async Task<ActionResult<UserDTO>> PostUser(CreateUserDTO createUserDTO)
         {
             var existingUser = await _context.Users
+                .Include(u => u.ChatGroups)
                 .FirstOrDefaultAsync(u => u.Name == createUserDTO.Name);
 
             if (existingUser != null)
@@ -69,7 +72,8 @@ namespace L6Backend.Controllers
                 var existingUserDTO = new UserDTO
                 {
                     Id = existingUser.Id,
-                    Name = existingUser.Name
+                    Name = existingUser.Name,
+                    ChatGroupIds = existingUser.ChatGroups.Select(cg => cg.Id).ToList()
                 };
 
                 return Ok(existingUserDTO);
@@ -86,7 +90,8 @@ namespace L6Backend.Controllers
             var newUserDTO = new UserDTO
             {
                 Id = user.Id,
-                Name = user.Name
+                Name = user.Name,
+                ChatGroupIds = new List<int>()
             };
 
             return CreatedAtAction(nameof(GetUser), new { id = user.Id }, newUserDTO);
